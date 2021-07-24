@@ -26,19 +26,3 @@ exports.getUser = async (req, res) => {
 
     res.json(resUser)
 }
-
-exports.postUser = async (req, res) => {
-    let newUser = new user({
-        userName: "spec",
-        email: 'mail@mail',
-        password: 'pass'
-    })
-
-    await newUser.save((err) => {
-        console.log(err);
-    })
-    console.log("ran");
-    res.json({
-        message: 'success'
-    })
-}

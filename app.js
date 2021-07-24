@@ -11,7 +11,11 @@ dotEnv.config()
 //mongoose setup
 const mongoose = require('mongoose')
 let MONGODB = 'mongodb://127.0.0.1:27017/blog'
-mongoose.connect(MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGODB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+})
 
 //routes
 const postsRoute = require('./routes/postRoute')

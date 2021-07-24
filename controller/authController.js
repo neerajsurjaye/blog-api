@@ -6,9 +6,10 @@ exports.login = async (req, res) => {
     let name = req.body.name
     let pass = req.body.pass
     let key = process.env.JWTSECRET
-    console.log(key);
+
 
     let tempUser = await user.findOne({ userName: name })
+
     if (!tempUser) {
         res.json({
             err: "User dosent exist"
@@ -100,13 +101,14 @@ exports.isAuth = (req, res, next) => {
 
         let tempUser = await user.findOne({ userName: decoded.name })
 
+
         if (!tempUser) {
             res.json({
                 err: "Invalid User"
             })
             return
         }
-        req.user = decoded
+        req.user = tempUser
         next()
     })
 }

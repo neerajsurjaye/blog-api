@@ -1,10 +1,9 @@
 const express = require('express')
 const router = express.Router()
+const auth = require('../controller/authController')
 
-router.get('/', (req, res) => {
-    res.json({
-        message: "comment"
-    })
-})
+const commentController = require('../controller/commentsController')
+
+router.post('/:postId', auth.isAuth, commentController.addComment)
 
 module.exports = router
