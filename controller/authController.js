@@ -44,9 +44,12 @@ exports.signUp = async (req, res) => {
     let name = req.body.name;
     let pass = req.body.pass;
 
-    console.log(process.env.SECRET);
+    // console.log(process.env.SECRET);
+    // res.json({
+    //     name, pass
+    // })
 
-    //checks if user already exists
+    // checks if user already exists
     let tempUser = await user.findOne({ userName: name })
     if (tempUser) {
         res.json({
