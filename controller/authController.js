@@ -60,7 +60,7 @@ exports.signUp = async (req, res) => {
 
     //encrypts password
     pass = await bcrypt.hash(pass, 10)
-    console.log(pass);
+    // console.log(pass);
 
     //creates new user
     let newUser = new user({
@@ -94,6 +94,7 @@ exports.isAuth = (req, res, next) => {
     let token = req.headers.auth;
     token = token.split(' ')[1]
 
+
     jwt.verify(token, process.env.JWTSECRET, async (err, decoded) => {
         if (err) {
             res.json({
@@ -103,7 +104,6 @@ exports.isAuth = (req, res, next) => {
         }
 
         let tempUser = await user.findOne({ userName: decoded.name })
-
 
         if (!tempUser) {
             res.json({

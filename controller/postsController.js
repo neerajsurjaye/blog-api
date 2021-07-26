@@ -47,7 +47,7 @@ exports.getPost = async (req, res) => {
         .find()
         .sort({ 'date': -1 })
         .populate('userid', 'userName')
-    console.log(currPosts);
+    // console.log(currPosts);
 
     res.json({
         success: "Success",
@@ -69,12 +69,22 @@ exports.getSinglePost = async (req, res) => {
 
     // console.log(await comment.findById('60fc322da13fef373c523c07').populate('user'));
 
-    let currPost = await posts.findById(id).populate({
+    // let currPost = await posts.findById(id).populate({
+    //     path: 'userid'
+    // })
+
+    let currPost = posts.findById(id).populate('userid', 'userName')
+    currPost.populate({
         path: 'comments',
         populate: {
-            path: 'user'
+            path: 'user',
+            select: 'userName'
         }
     })
+    currPost = await currPost
+
+    console.log(currPost)
+    console.log("Update")
 
     res.json({
         success: "Success",
