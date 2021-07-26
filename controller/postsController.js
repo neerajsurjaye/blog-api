@@ -43,7 +43,10 @@ exports.getUserPost = async (req, res) => {
 }
 
 exports.getPost = async (req, res) => {
-    let currPosts = await posts.find()
+    let currPosts = await posts
+        .find()
+        .sort({ 'date': -1 })
+        .populate('userid', 'userName')
     console.log(currPosts);
 
     res.json({
