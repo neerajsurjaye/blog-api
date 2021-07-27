@@ -78,7 +78,7 @@ exports.signUp = async (req, res) => {
     })
 
     res.json({
-        message: 'successfully signed up'
+        success: 'successfully signed up'
     })
 }
 

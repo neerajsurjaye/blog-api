@@ -10,9 +10,7 @@ let dotEnv = require('dotenv')
 dotEnv.config()
 
 //allow all origin
-app.use(cors({
-    origin: '*'
-}))
+app.use(cors())
 
 
 //mongoose setup
