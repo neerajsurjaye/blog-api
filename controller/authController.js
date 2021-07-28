@@ -98,7 +98,7 @@ exports.isAuth = (req, res, next) => {
     jwt.verify(token, process.env.JWTSECRET, async (err, decoded) => {
         if (err) {
             res.json({
-                err: "Invalid token : Login in again"
+                err: "Invalid token : Login in "
             })
             return
         }

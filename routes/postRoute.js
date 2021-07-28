@@ -4,7 +4,7 @@ const postsController = require('../controller/postsController')
 const authController = require('../controller/authController')
 
 
-router.get('/', postsController.getPost)
+router.get('/page/:page', postsController.getPost)
 router.post('/', authController.isAuth, postsController.addPost)
 router.get('/:id', postsController.getSinglePost)
 router.get('/user/:id', postsController.getUserPost)

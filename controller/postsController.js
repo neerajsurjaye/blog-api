@@ -43,9 +43,22 @@ exports.getUserPost = async (req, res) => {
 }
 
 exports.getPost = async (req, res) => {
+    console.log(req.params);
+    let page = req.params.page
+
+    if (isNaN(page)) {
+        res.json({
+            err: "Not a page no"
+        })
+        return
+    }
+    page = parseInt(page)
+
     let currPosts = await posts
         .find()
         .sort({ 'date': -1 })
+        .limit(10)
+        .skip(10 * page)
         .populate('userid', 'userName')
     // console.log(currPosts);
 
