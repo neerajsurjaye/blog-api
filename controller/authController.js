@@ -26,7 +26,7 @@ exports.login = async (req, res) => {
 
 
         let token = await jwt.sign(payLoad, key)
-        // console.log(token);
+        // //console.log(token);
 
         res.json({
             success: "logged in",
@@ -44,7 +44,7 @@ exports.signUp = async (req, res) => {
     let name = req.body.name;
     let pass = req.body.pass;
 
-    // console.log(process.env.SECRET);
+    // //console.log(process.env.SECRET);
     // res.json({
     //     name, pass
     // })
@@ -60,7 +60,7 @@ exports.signUp = async (req, res) => {
 
     //encrypts password
     pass = await bcrypt.hash(pass, 10)
-    // console.log(pass);
+    // //console.log(pass);
 
     //creates new user
     let newUser = new user({

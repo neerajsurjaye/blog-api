@@ -29,7 +29,7 @@ exports.getUser = async (req, res) => {
         posts: currUser.posts
     }
 
-    console.log("Res User");
+    //console.log("Res User");
 
     res.json(resUser)
 }

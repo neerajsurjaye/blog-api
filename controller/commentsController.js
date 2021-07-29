@@ -4,7 +4,7 @@ const scripts = require('./scripts')
 
 exports.addComment = async (req, res) => {
     let id = req.params.postId
-    // console.log(req.params);
+    // //console.log(req.params);
     let isValid = scripts.isValidObjectId(id)
     if (!isValid) {
         res.json({
@@ -13,14 +13,14 @@ exports.addComment = async (req, res) => {
         return
     }
 
-    // console.log(req.user);
+    // //console.log(req.user);
     let newComment = new comment({
         desc: req.body.desc,
         user: req.user._id
     })
 
     newComment = await newComment.save()
-    // console.log(newComment);
+    // //console.log(newComment);
 
     let currPost = await posts.findByIdAndUpdate(id, { $push: { comments: newComment._id } })
 

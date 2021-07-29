@@ -15,7 +15,7 @@ app.use(cors())
 
 //mongoose setup
 const mongoose = require('mongoose')
-let MONGODB = 'mongodb://127.0.0.1:27017/blog'
+let MONGODB = process.env.MONGODB
 mongoose.connect(MONGODB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -47,5 +47,5 @@ app.get('*', (req, res) => {
 
 const PORT = process.env.port || 5000
 app.listen(PORT, () => {
-    console.log(`Listning on ${PORT}`);
+    //console.log(`Listning on ${PORT}`);
 })

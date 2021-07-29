@@ -18,7 +18,7 @@ exports.addPost = async (req, res) => {
         { _id: req.user._id },
         { $push: { posts: post } }
     )
-    console.log(currUser);
+    //console.log(currUser);
 
     res.json({
         success: "Post Added",
@@ -43,7 +43,7 @@ exports.getUserPost = async (req, res) => {
 }
 
 exports.getPost = async (req, res) => {
-    console.log(req.params);
+    //console.log(req.params);
     let page = req.params.page
 
     if (isNaN(page)) {
@@ -60,7 +60,7 @@ exports.getPost = async (req, res) => {
         .limit(10)
         .skip(10 * page)
         .populate('userid', 'userName')
-    // console.log(currPosts);
+    // //console.log(currPosts);
 
     res.json({
         success: "Success",
@@ -80,7 +80,7 @@ exports.getSinglePost = async (req, res) => {
         return
     }
 
-    // console.log(await comment.findById('60fc322da13fef373c523c07').populate('user'));
+    // //console.log(await comment.findById('60fc322da13fef373c523c07').populate('user'));
 
     // let currPost = await posts.findById(id).populate({
     //     path: 'userid'
@@ -96,8 +96,8 @@ exports.getSinglePost = async (req, res) => {
     })
     currPost = await currPost
 
-    console.log(currPost)
-    console.log("Update")
+    //console.log(currPost)
+    //console.log("Update")
 
     res.json({
         success: "Success",
